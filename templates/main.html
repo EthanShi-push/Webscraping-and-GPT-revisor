@@ -9,26 +9,28 @@
     <body>
         <h1 class="title">AI Resume Optimizer</h1>
         <div class="form_div">
-            <div class="input_div">
-                <form action="/submit" method="post"> <!--Placeholder ... Use Flask-->
-                    <h2></h2>
-                    <fieldset class="inputs">
-                    <label for="job_url"></label>Job Title: <input type="text" id="job_url" name="job_url" placeholder="Job Title, keywords, or company">
-                    </fieldset>
-                    <fieldset class="inputs">
-                    <label for="resume">Upload Resume: </label><input type="file" id="resume">
-                    </fieldset>
-                    <fieldset>
-                    <button id="submit">Submit</button>
-                    </fieldset>
-                </form>
-            </div>
+            <form action="/submit" method="post"> 
+                <h2></h2>
+                <fieldset class="inputs">
+                <label for="job_url">Job Title</label>
+                <br>
+                <input type="text" id="job_url" name="job_url" placeholder="Job Title, keywords, or company">
+                </fieldset>
+                <fieldset class="inputs">
+                <label for="resume">Upload Resume</label>
+                <br>
+                <input type="file" id="resume">
+                </fieldset>
+                <fieldset id="submit_field">
+                <button id="submit">Submit</button>
+                </fieldset>
+            </form>
             <div class="output_div">
-                <h2>GPT Response</h2>
+                <h2 id="gptresponse">GPT Response</h2>
                 <div class="response">
-                {% if result %}
-                    <p>{{ result }}</p>
-                {% endif %} 
+                    {% if result %}
+                        <p>{{ result }}</p>
+                    {% endif %} 
                 </div>
             </div>
         </div>
