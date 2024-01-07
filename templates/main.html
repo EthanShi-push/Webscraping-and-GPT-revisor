@@ -9,17 +9,17 @@
     <body>
         <h1 class="title">AI Resume Optimizer</h1>
         <div class="form_div">
-            <form action="/submit" method="post"> 
+            <form action="/submit" method="post" enctype="multipart/form-data"> 
                 <h2></h2>
                 <fieldset class="inputs">
                 <label for="job_url">Job Title</label>
                 <br>
-                <input type="text" id="job_url" name="job_url" placeholder="Job Title, keywords, or company">
+                <input type="text" id="job_url" name="job_url" placeholder="Job Title, keywords, or company" required>
                 </fieldset>
                 <fieldset class="inputs">
                 <label for="resume">Upload Resume</label>
                 <br>
-                <input type="file" id="resume">
+                <input type="file" id="resume" name="file" required>
                 </fieldset>
                 <fieldset id="submit_field">
                 <button id="submit">Submit</button>

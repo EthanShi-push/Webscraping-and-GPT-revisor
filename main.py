@@ -12,6 +12,8 @@ from flask import Flask, request, render_template
 
 from analyze import get_response
 
+from utils import convert_docx_to_txt
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,13 +25,13 @@ def webscrape(keyword):
     service = Service("chromedriver.exe")
     driver = webdriver.Chrome(service=service)
     driver.get("https://ca.indeed.com/")
-    time.sleep(1)
+    time.sleep(0.5)
     searchJob = driver.find_element(By.ID,"text-input-what")
     searchJob.clear()
     searchJob.send_keys(keyword)
 
     searchArea = driver.find_element(By.ID,"text-input-where") 
-    time.sleep(1)
+    time.sleep(0.5)
     number_of_characters = len(searchArea.get_attribute('value'))
     searchArea.send_keys(number_of_characters * Keys.BACKSPACE)
     searchArea.send_keys("Edmonton, AB" + Keys.ENTER )
@@ -37,7 +39,7 @@ def webscrape(keyword):
 
     maximumPages = 1
     #for i in range(maximumPages):
-    time.sleep(3)
+    time.sleep(1.5)
 
     jobListings = driver.find_element(By.ID,"mosaic-jobResults")
     jobs = jobListings.find_elements(By.CLASS_NAME,"job_seen_beacon")
@@ -76,10 +78,23 @@ def webscrape(keyword):
 @app.route('/submit', methods=['POST'])
 def submit():
     input_data = request.form["job_url"]
-    # Process input_data in your Python script as needed
-    # For now, let's just print it
+
+    if 'file' not in request.files:
+        return 'No file part'
+
+    file = request.files["file"]
+
+    if file.filename == '':
+        return 'No selected file'
+    
+    if file.filename.endswith('.docx'):
+        text = convert_docx_to_txt(file)
+    else:
+        # read the file
+        text = file.read().decode('utf-8')
+
     job = webscrape(input_data)
-    result = get_response(job)
+    result = get_response(job, text)
     return render_template('main.html', result=result)
 
 app.run(debug=False)
