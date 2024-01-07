@@ -21,7 +21,6 @@ h1 {
 fieldset {
     border: none;
     padding: 2em 0;
-
 }
 
 .response {
@@ -30,6 +29,7 @@ fieldset {
     border-radius: 15px;
     display: block;
     min-height: 5rem;
+    padding: 0 1em;
 }
 
 button {
