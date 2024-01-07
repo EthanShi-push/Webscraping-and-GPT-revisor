@@ -1,1 +1,8 @@
-Paste OpenAI API Key in key.txt, do not enter or include spaces.
+Paste OpenAI API Key in key.txt, do not press enter or include spaces.
+
+Install necessary dependencies by running the following command in cmd in this directory:
+pip install -r requirements.txt
+
+To use this program, run the following command in cmd in this directory:
+python main.py
+then navigate to http://127.0.0.1:5000 using a browser.

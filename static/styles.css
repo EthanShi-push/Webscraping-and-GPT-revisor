@@ -1,0 +1,69 @@
+/* HTML Stylesheet */
+body {
+    background-color: #F9F5F1;
+    color: #303035;
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form_div {
+    background-color: #F9F5F1;
+    width: 40%;
+    margin: 1em auto;
+    border: 20px solid #F9F5F1;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #303035;
+}
+
+fieldset {
+    border: none;
+    padding: 2em 0;
+
+}
+
+.response {
+    background-color: white;
+    border: 3px solid #303035;
+    border-radius: 15px;
+    display: block;
+    min-height: 5rem;
+}
+
+button {
+    width: 20em;
+    height: 3em;
+    font-size: 16px;
+}
+
+label {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    padding-bottom: 0.5em;
+}
+
+input[type="text"] {
+    width: 30em;
+    height: 1.5em;
+}
+
+input[type="file"] {
+    width: 15em;
+    height: 2em;
+}
+
+input {
+    margin: auto auto;
+}
+
+#submit_field {
+    text-align: center;
+}
+
+#gptresponse {
+    margin-bottom: 0.25em;
+}
